@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 # Flutter Pokemon TeamBuilder App (PokemonDer)
 
 สิ่งที่จำเป็นสำหรับการรัน (Requirement)
