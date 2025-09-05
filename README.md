@@ -1,16 +1,23 @@
-# pokemonder
+# Flutter Pokemon TeamBuilder App (PokemonDer)
 
-A new Flutter project.
+สิ่งที่จำเป็นสำหรับการรัน (Requirement)
+- Flutter
 
-## Getting Started
+## STEP 1 
+- Clone Repo
+```
+git clone https://github.com/kaikunz/PokemonDer
+cd PokemonDer
+```
 
-This project is a starting point for a Flutter application.
+## STEP 2
+- Install Dependencies
+```
+flutter pub get
+```
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## STEP 3
+- Run by Chrome Broswer (Or run other if you want)
+```
+flutter run -d chrome
+```
