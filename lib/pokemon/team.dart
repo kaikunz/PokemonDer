@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'dart:math';
 
 class Pokemon {
   final String name;
@@ -118,14 +119,18 @@ class PokemonController extends GetxController {
       Get.snackbar("Error", "ยังไม่ได้เลือก Pokémon");
       return;
     }
+    final score = Random().nextInt(10) + 1;
+
     final newTeam = {
       "name": teamName.value,
       "members": selected.map((p) => p.toJson()).toList(),
+      "score": score,
     };
 
     allTeams.add(newTeam);
     box.write('allTeams', allTeams);
-
+    selected.clear();
+    teamName.value = "My Team";
     Get.snackbar("สำเร็จ", "บันทึกทีมแล้ว!");
   }
 

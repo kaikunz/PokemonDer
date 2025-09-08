@@ -25,6 +25,7 @@ class TeamListPage extends StatelessWidget {
             final team = ctrl.allTeams[index];
             final teamName = team['name'];
             final members = team['members'] as List<dynamic>;
+            final score = team['score'] ?? 0;
 
             return Card(
               margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -33,11 +34,15 @@ class TeamListPage extends StatelessWidget {
               ),
               elevation: 4,
               child: ListTile(
-                title: Text(teamName, style: const TextStyle(fontWeight: FontWeight.bold)),
-                subtitle: Text("${members.length} Pokémon"),
-                trailing: const Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                },
+                title: Text(
+                  teamName,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(
+                  "${members.length} Pokémon | Score: $score",
+                  style: const TextStyle(fontSize: 14),
+                ),
+                // ไม่มี onTap → ไม่มี route ไปหน้า detail
               ),
             );
           },
