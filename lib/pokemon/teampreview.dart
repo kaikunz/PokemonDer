@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'team.dart';
+import 'teamlistpage.dart';
 
 class TeamPreviewPage extends StatelessWidget {
   final PokemonController ctrl = Get.find<PokemonController>();
@@ -57,6 +58,38 @@ class TeamPreviewPage extends StatelessWidget {
           },
         );
       }),
+
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SizedBox(
+          width: double.infinity,
+          height: 55,
+          child: ElevatedButton.icon(
+            onPressed: () {
+              ctrl.saveCurrentTeam();
+              Get.off(() => TeamListPage());
+              
+            },
+            icon: const Icon(Icons.save, size: 24, color: Colors.white),
+            label: const Text(
+              "Save Team",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.green,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              elevation: 6,
+              shadowColor: Colors.greenAccent,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

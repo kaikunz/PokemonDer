@@ -64,9 +64,12 @@ class PokemonController extends GetxController {
   var selected = <Pokemon>[].obs;
   var teamName = "My Team".obs;
   var query = "".obs;
+  var allTeams = <Map<String, dynamic>>[].obs;
 
   final box = GetStorage();
   final ApiService api = Get.put(ApiService());
+  
+  
 
   @override
   void onInit() {
@@ -74,7 +77,8 @@ class PokemonController extends GetxController {
     teamName.value = box.read('teamName') ?? "My Team";
     final saved = box.read('team') ?? [];
     selected.value = saved.map<Pokemon>((e) => Pokemon(name: e['name'], imageUrl: e['imageUrl'])).toList();
-
+    final savedTeams = box.read('allTeams') ?? [];
+    allTeams.value = List<Map<String, dynamic>>.from(savedTeams);
     loadPokemons();
   }
 
@@ -107,6 +111,22 @@ class PokemonController extends GetxController {
   void resetTeam() {
     selected.clear();
     saveTeam();
+  }
+
+   void saveCurrentTeam() {
+    if (selected.isEmpty) {
+      Get.snackbar("Error", "ยังไม่ได้เลือก Pokémon");
+      return;
+    }
+    final newTeam = {
+      "name": teamName.value,
+      "members": selected.map((p) => p.toJson()).toList(),
+    };
+
+    allTeams.add(newTeam);
+    box.write('allTeams', allTeams);
+
+    Get.snackbar("สำเร็จ", "บันทึกทีมแล้ว!");
   }
 
   List<Pokemon> get filteredPokemons {
